@@ -36,6 +36,7 @@ namespace SingleResponsibilityPrinciple
             return tradesString;
         }
 
+        /*
         public IEnumerable<string> GetTradeData()
         {
             Task<List<string>> task = Task.Run(() => GetTradeAsync());
@@ -43,6 +44,17 @@ namespace SingleResponsibilityPrinciple
 
             List<string> tradeList = task.Result;
             return tradeList;
+        }
+        */
+
+        // step 3
+        public async Task<IEnumerable<string>> GetTradeData()
+        {
+            // Await the asynchronous GetTradeAsync method
+            List<string> tradeList = await GetTradeAsync();
+
+            // Return the result, if tradeList is null, return an empty list
+            return tradeList ?? new List<string>();
         }
     }
 }

@@ -14,6 +14,8 @@ namespace SingleResponsibilityPrinciple
         {
             this.baseProvider = baseProvider;
         }
+
+        /*
         public IEnumerable<string> GetTradeData()
         {
             Task<IEnumerable<string>> task = Task.Run(() => baseProvider.GetTradeData()); ;
@@ -21,5 +23,16 @@ namespace SingleResponsibilityPrinciple
             IEnumerable<string> lines = task.Result;
             return lines;
         }
+        */
+
+        // step 2
+        // Making the method async and returning a Task<IEnumerable<string>> to match the interface
+        public async Task<IEnumerable<string>> GetTradeData()
+        {
+            // Use await to call the baseProvider's GetTradeData asynchronously
+            return await baseProvider.GetTradeData();
+        }
+
+
     }
 }

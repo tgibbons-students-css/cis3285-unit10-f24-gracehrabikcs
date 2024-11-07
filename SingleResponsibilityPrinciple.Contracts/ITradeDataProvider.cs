@@ -4,6 +4,9 @@ namespace SingleResponsibilityPrinciple.Contracts
 {
     public interface ITradeDataProvider
     {
-        IEnumerable<string> GetTradeData();
+        // step 1
+        Task<IEnumerable<string>> GetTradeData();
+
+        //IEnumerable<string> GetTradeData();
     }
 }
