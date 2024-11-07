@@ -53,6 +53,18 @@ namespace SingleResponsibilityPrinciple
                 Console.WriteLine(line);
             }
 
+            // Testing part 2
+            ITradeDataProvider baseProvider = new URLTradeDataProvider(tradeURL, logger); // Assuming this is a synchronous provider
+            URLAsyncProvider asyncProvider = new URLAsyncProvider(baseProvider);
+
+            // Fetch the trade data 
+            var tradeData = asyncProvider.GetTradeData();
+
+            foreach (var line in tradeData)
+            {
+                Console.WriteLine(line);
+            }
+
             //Console.ReadKey();
 
 
